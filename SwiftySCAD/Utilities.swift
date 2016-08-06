@@ -11,3 +11,7 @@ func write(string: String) {
         try string.writeToFile("/Users/jeff/Test.scad", atomically: true, encoding: NSUTF8StringEncoding)
     } catch {}
 }
+
+func write(shapes: [String]) {
+    write(shapes.joinWithSeparator("\n"))
+}

@@ -100,3 +100,32 @@ extension String {
         return scale(x: x, y: y, z: z, shape: self)
     }
 }
+
+extension SequenceType where Generator.Element == String {
+    func and() -> String {
+        return self.joinWithSeparator("\n")
+    }
+    
+    func union_() -> String {
+        if let array = self as? [String] {
+            return union(shapes: array)
+        } else {
+            return ""
+        }
+    }
+    
+    func difference_() -> String {
+        if let array = self as? [String] {
+            return difference(shapes: array)
+        } else {
+            return ""
+        }
+    }
+}
+
+
+
+
+
+
+
