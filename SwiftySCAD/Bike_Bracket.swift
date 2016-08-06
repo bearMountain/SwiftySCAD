@@ -15,15 +15,18 @@ private let tubeDepthDiameter: CGFloat = 16.5
 private let clipSpacerThickness: CGFloat = 5.3
 private let rotationAngle: CGFloat = 20.0
 private let tiltSlop: CGFloat = 0.75
+private let trapTopWidth: CGFloat = 19.5
+private let trapBottomWith: CGFloat = 15.8
+private let trapSlop: CGFloat = 0.2
 
 // Bracket Constants
 private let bracketHeight: CGFloat = 16.0
-private let bracketWidth: CGFloat = 20.0
-private let bracketThickness: CGFloat = 0.75
+private let bracketWidth: CGFloat = 18.0
+private let hexThickness: CGFloat = 1
 private let bracketGap: CGFloat = tubeDepthDiameter+2
-private let holeInset: CGFloat = 7.0
+private let holeInset: CGFloat = 5.0
 private let boltDiameter: CGFloat = 2.7
-private let curveSlop: CGFloat = 1
+private let curveSlop: CGFloat = 0
 
 // Parts
 private func mainTube() -> String {
@@ -33,7 +36,10 @@ private func mainTube() -> String {
     let taperedCylinder = cylinder(topDiameter: tubeTopDiameter, bottomDiameter: tubeBottomDiameter, height: clipHeight)
         .scale_(x: cylinderSquishRatio, y: 1, z: 1)
     
-    let trap = trapezoid(topWidth: 19.5, bottomWidth: 15.8, height: clipHeight, thickness: clipSpacerThickness)
+    let trap = trapezoid(topWidth: trapTopWidth+trapSlop,
+                      bottomWidth: trapBottomWith+trapSlop,
+                           height: clipHeight,
+                        thickness: clipSpacerThickness)
         .rotate_(x: -1.1, y: 0, z: 0)
         .translate_(x: 0, y: clipSpacerThickness.half+dist-tiltSlop+2, z: 0)
         .rotate_(x: 0, y: 0, z: -rotationAngle)
@@ -76,9 +82,9 @@ private func bracketWithHole() -> String {
 
 private func bracketWithHex() -> String {
     let bracket = bracketWithHole()
-    let hex = hexagon(width: 6.3, thickness: bracketThickness)
+    let hex = hexagon(width: 6.3, thickness: hexThickness)
         .rotate_(x: -90, y: 0, z: 0)
-        .translate_(x: bracketWidth.half-holeInset, y: wallThickness.half-bracketThickness+epsilon, z: bracketHeight.half)
+        .translate_(x: bracketWidth.half-holeInset, y: wallThickness.half-hexThickness+epsilon, z: bracketHeight.half)
     
     let piece = difference(shapes: [bracket, hex])
     
