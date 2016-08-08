@@ -6,16 +6,16 @@
 import Foundation
 
 
-extension CGFloat {
-    var half: CGFloat {
+extension Float {
+    var half: Float {
         get {
             return self/2.0
         }
     }
 }
 
-func distance(elipseWidth elipseWidth: CGFloat, elipseHeight: CGFloat, angle: CGFloat) -> CGFloat {
-    let radians = (CGFloat(M_PI) * angle) / 180.0
+func distance(elipseWidth elipseWidth: Float, elipseHeight: Float, angle: Float) -> Float {
+    let radians = (Float(M_PI) * angle) / 180.0
     
     let x = elipseWidth.half*cos(radians)
     let y = elipseHeight.half*sin(radians)
@@ -24,8 +24,8 @@ func distance(elipseWidth elipseWidth: CGFloat, elipseHeight: CGFloat, angle: CG
     return dist
 }
 
-func getXY(elipseWidth elipseWidth: CGFloat, elipseHeight: CGFloat, angle: CGFloat) -> (CGFloat, CGFloat) {
-    let radians = (CGFloat(M_PI) * angle) / 180.0
+func getXY(elipseWidth elipseWidth: Float, elipseHeight: Float, angle: Float) -> (Float, Float) {
+    let radians = (Float(M_PI) * angle) / 180.0
     
     let x = elipseWidth.half*cos(radians)
     let y = elipseHeight.half*sin(radians)

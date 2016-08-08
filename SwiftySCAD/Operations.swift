@@ -9,12 +9,12 @@ import Foundation
 //
 // translate([1,2,3]) {}
 //
-func translate(x x: CGFloat, y: CGFloat, z: CGFloat, shapes: ()->(String)) -> String {
+func translate(x x: Float, y: Float, z: Float, shapes: ()->(String)) -> String {
     let term = "translate([\(x), \(y), \(z)])"
     return aggregate(term: term, shapes: [shapes()])
 }
 
-func translate(x x: CGFloat, y: CGFloat, z: CGFloat, shape: String) -> String {
+func translate(x x: Float, y: Float, z: Float, shape: String) -> String {
     return translate(x: x, y: y, z: z) {
         return shape
     }
@@ -45,7 +45,7 @@ func intersection(shapes shapes:[String]) -> String {
 //
 // rotate([90, 0, 0]) {}
 //
-func rotate(x x: CGFloat, y: CGFloat, z: CGFloat, shape: String) -> String {
+func rotate(x x: Float, y: Float, z: Float, shape: String) -> String {
     let term = "rotate([\(x), \(y), \(z)])"
     return aggregate(term: term, shape: shape)
 }
@@ -60,7 +60,7 @@ func hull(shapes shapes:[String]) -> String {
 //
 // scale([1, 2, 3]) {}
 //
-func scale(x x: CGFloat, y: CGFloat, z: CGFloat, shape: String) -> String {
+func scale(x x: Float, y: Float, z: Float, shape: String) -> String {
     let term = "scale([\(x), \(y), \(z)])"
     return aggregate(term: term, shape: shape)
 }
@@ -88,17 +88,40 @@ func aggregate(term term: String, shape: String) -> String {
 
 
 extension String {
-    func translate_(x x: CGFloat, y: CGFloat, z: CGFloat) -> String {
+    func translate_(x x: Float, y: Float, z: Float) -> String {
         return translate(x: x, y: y, z: z, shape: self)
     }
     
-    func rotate_(x x: CGFloat, y: CGFloat, z: CGFloat) -> String {
+    func rotate_(x x: Float, y: Float, z: Float) -> String {
         return rotate(x: x, y: y, z: z, shape: self)
     }
     
-    func scale_(x x: CGFloat, y: CGFloat, z: CGFloat) -> String {
+    func scale_(x x: Float, y: Float, z: Float) -> String {
         return scale(x: x, y: y, z: z, shape: self)
     }
+}
+
+func solidFrom(curve f: (Float)->(Float), maxX: Float = 1, resolution: Float = 10, displaySize: Size, seedObject: String) -> String
+{
+    let numericalStep = (maxX*2.0)/resolution
+    let xVals = maxX.stride(to: -(maxX), by: -numericalStep)
+    let yVals = xVals.map(f)
+    let maxYVal = yVals.maxElement()
+    let minYVal = yVals.minElement()
+    let range = maxYVal! - minYVal!
+    let displayStep = (displaySize.width*2.0)/resolution
+    
+    var placeholders: [String] = []
+    var currentX = -displaySize.width
+    for (i, _) in xVals.enumerate() {
+        let yVal = (yVals[i]/range) * displaySize.height
+        let obj = translate(x: currentX, y: 0, z: yVal, shape: seedObject)
+        placeholders.append(obj)
+        
+        currentX += displayStep
+    }
+    
+    return hull(shapes: placeholders)
 }
 
 extension SequenceType where Generator.Element == String {

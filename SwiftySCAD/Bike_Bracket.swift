@@ -6,27 +6,27 @@
 import Foundation
 
 // MainTube Constants
-private let cylinderSquishRatio: CGFloat = 0.74
-private let wallThickness: CGFloat = 3
-private let clipHeight: CGFloat = 40
-private let tubeTopDiameter: CGFloat = 22.3
-private let tubeBottomDiameter: CGFloat = 20.8
-private let tubeDepthDiameter: CGFloat = 16.5
-private let clipSpacerThickness: CGFloat = 5.3
-private let rotationAngle: CGFloat = 20.0
-private let tiltSlop: CGFloat = 0.75
-private let trapTopWidth: CGFloat = 19.5
-private let trapBottomWith: CGFloat = 15.8
-private let trapSlop: CGFloat = 0.2
+private let cylinderSquishRatio: Float = 0.74
+private let wallThickness: Float = 3
+private let clipHeight: Float = 40
+private let tubeTopDiameter: Float = 22.3
+private let tubeBottomDiameter: Float = 20.8
+private let tubeDepthDiameter: Float = 16.5
+private let clipSpacerThickness: Float = 5.3
+private let rotationAngle: Float = 20.0
+private let tiltSlop: Float = 0.75
+private let trapTopWidth: Float = 19.5
+private let trapBottomWith: Float = 15.8
+private let trapSlop: Float = 0.2
 
 // Bracket Constants
-private let bracketHeight: CGFloat = 16.0
-private let bracketWidth: CGFloat = 18.0
-private let hexThickness: CGFloat = 1
-private let bracketGap: CGFloat = tubeDepthDiameter+2
-private let holeInset: CGFloat = 5.0
-private let boltDiameter: CGFloat = 2.7
-private let curveSlop: CGFloat = 0
+private let bracketHeight: Float = 16.0
+private let bracketWidth: Float = 18.0
+private let hexThickness: Float = 1
+private let bracketGap: Float = tubeDepthDiameter+2
+private let holeInset: Float = 5.0
+private let boltDiameter: Float = 2.7
+private let curveSlop: Float = 0
 
 // Parts
 private func mainTube() -> String {

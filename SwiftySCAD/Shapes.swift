@@ -7,25 +7,25 @@ import Foundation
 //
 // cylinder(r = 3.5, h = 1, center = true, $fn = 32);
 //
-func cylinder(radius radius: CGFloat, height: CGFloat) -> String {
+func cylinder(radius radius: Float, height: Float) -> String {
     return "cylinder(r = \(radius), h = \(height), center = true, $fn = 32);"
 }
 
-func cylinder(diameter diameter: CGFloat, height: CGFloat) -> String {
+func cylinder(diameter diameter: Float, height: Float) -> String {
     return cylinder(radius: diameter/2.0, height: height)
 }
 
 //
 // cylinder(h = height, r1 = BottomRadius, r2 = TopRadius, center = true/false);
 //
-func cylinder(topDiameter topDiameter: CGFloat, bottomDiameter: CGFloat, height: CGFloat) -> String {
+func cylinder(topDiameter topDiameter: Float, bottomDiameter: Float, height: Float) -> String {
     return "cylinder(h = \(height), r1 = \(bottomDiameter/2.0), r2 = \(topDiameter/2.0), center = false);"
 }
 
 //
 // cube([width + height, length, height], center = true);
 //
-func cube(x x: CGFloat, y: CGFloat, z: CGFloat) -> String {
+func cube(x x: Float, y: Float, z: Float) -> String {
     return "cube([\(x), \(y), \(z)], center = true);"
 }
 
@@ -34,7 +34,7 @@ func cube(x x: CGFloat, y: CGFloat, z: CGFloat) -> String {
 //
 // module trapezoid(width_base, width_top,height,thickness)
 //
-func trapezoid(topWidth topWidth: CGFloat, bottomWidth: CGFloat, height: CGFloat, thickness: CGFloat) -> String {
+func trapezoid(topWidth topWidth: Float, bottomWidth: Float, height: Float, thickness: Float) -> String {
     let halfBottom = bottomWidth/2.0
     let halfTop = topWidth/2.0
     
@@ -53,7 +53,7 @@ func trapezoid(topWidth topWidth: CGFloat, bottomWidth: CGFloat, height: CGFloat
 //
 // width: flat-side to flat-side width measurement
 //
-func hexagon(width width: CGFloat, thickness: CGFloat) -> String {
+func hexagon(width width: Float, thickness: Float) -> String {
     let circleRadius = width.half/(sqrt(3.0)*0.5)
     
     let circle = "linear_extrude(height = \(thickness)) circle(r= \(circleRadius), $fn=6);"
