@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F0DEE771D58966C009CE9E4 /* CustomTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DEE761D58966C009CE9E4 /* CustomTypes.swift */; };
 		1F7E18931D3F0FC20077CF85 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E18921D3F0FC20077CF85 /* main.swift */; };
-		1F7E189A1D3F1AFF0077CF85 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E18991D3F1AFF0077CF85 /* Shapes.swift */; };
+		1F7E189A1D3F1AFF0077CF85 /* 3DShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E18991D3F1AFF0077CF85 /* 3DShapes.swift */; };
 		1FA00B4C1D4C0A5200C8AD42 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA00B4B1D4C0A5200C8AD42 /* Utilities.swift */; };
 		1FA00B4E1D4C0A7300C8AD42 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA00B4D1D4C0A7300C8AD42 /* Operations.swift */; };
 		1FA00B501D4C0AA500C8AD42 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA00B4F1D4C0AA500C8AD42 /* Tests.swift */; };
@@ -18,6 +18,7 @@
 		1FA00B871D4FCF7F00C8AD42 /* Stroller_Bracket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA00B861D4FCF7F00C8AD42 /* Stroller_Bracket.swift */; };
 		1FA00B8C1D4FDA4F00C8AD42 /* MathHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA00B8B1D4FDA4F00C8AD42 /* MathHelpers.swift */; };
 		1FDA515E1D5283DD00F0527A /* Bike_Bracket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA515D1D5283DD00F0527A /* Bike_Bracket.swift */; };
+		1FE366F81D5A60BE00E69A3D /* 2DShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE366F71D5A60BE00E69A3D /* 2DShapes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,7 +37,7 @@
 		1F0DEE761D58966C009CE9E4 /* CustomTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTypes.swift; sourceTree = "<group>"; };
 		1F7E188F1D3F0FC20077CF85 /* SwiftySCAD */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftySCAD; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7E18921D3F0FC20077CF85 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		1F7E18991D3F1AFF0077CF85 /* Shapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		1F7E18991D3F1AFF0077CF85 /* 3DShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 3DShapes.swift; sourceTree = "<group>"; };
 		1FA00B4B1D4C0A5200C8AD42 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		1FA00B4D1D4C0A7300C8AD42 /* Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Operations.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1FA00B4F1D4C0AA500C8AD42 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 		1FA00B861D4FCF7F00C8AD42 /* Stroller_Bracket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stroller_Bracket.swift; sourceTree = "<group>"; };
 		1FA00B8B1D4FDA4F00C8AD42 /* MathHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MathHelpers.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1FDA515D1D5283DD00F0527A /* Bike_Bracket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Bike_Bracket.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		1FE366F71D5A60BE00E69A3D /* 2DShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 2DShapes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +116,8 @@
 		1FA00B8A1D4FD24A00C8AD42 /* SwiftySCAD */ = {
 			isa = PBXGroup;
 			children = (
-				1F7E18991D3F1AFF0077CF85 /* Shapes.swift */,
+				1F7E18991D3F1AFF0077CF85 /* 3DShapes.swift */,
+				1FE366F71D5A60BE00E69A3D /* 2DShapes.swift */,
 				1FA00B4B1D4C0A5200C8AD42 /* Utilities.swift */,
 				1FA00B4D1D4C0A7300C8AD42 /* Operations.swift */,
 				1FA00B511D4C175C00C8AD42 /* Constants.swift */,
@@ -185,9 +188,10 @@
 				1FA00B501D4C0AA500C8AD42 /* Tests.swift in Sources */,
 				1F7E18931D3F0FC20077CF85 /* main.swift in Sources */,
 				1FA00B871D4FCF7F00C8AD42 /* Stroller_Bracket.swift in Sources */,
-				1F7E189A1D3F1AFF0077CF85 /* Shapes.swift in Sources */,
+				1F7E189A1D3F1AFF0077CF85 /* 3DShapes.swift in Sources */,
 				1FDA515E1D5283DD00F0527A /* Bike_Bracket.swift in Sources */,
 				1FA00B8C1D4FDA4F00C8AD42 /* MathHelpers.swift in Sources */,
+				1FE366F81D5A60BE00E69A3D /* 2DShapes.swift in Sources */,
 				1FA00B4E1D4C0A7300C8AD42 /* Operations.swift in Sources */,
 				1FA00B521D4C175C00C8AD42 /* Constants.swift in Sources */,
 				1FA00B851D4DE9CA00C8AD42 /* Extruder_Cullet.swift in Sources */,

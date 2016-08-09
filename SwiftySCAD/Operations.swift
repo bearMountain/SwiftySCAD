@@ -65,6 +65,23 @@ func scale(x x: Float, y: Float, z: Float, shape: String) -> String {
     return aggregate(term: term, shape: shape)
 }
 
+//
+// rotate_extrude(angle = 360, convexity = 10, $fn = 100)
+//
+func rotate_extrude(angle: Int = 360, convexity: Int = 10, resolution: Int = 10, shape: String) -> String {
+    let term = "rotate_extrude(angle = \(angle), convexity = \(convexity), $fn = \(resolution))"
+    return aggregate(term: term, shape: shape)
+}
+
+//
+// mirror(v= [x, y, z] ) { ... }
+// x, y, z parameters used to contstruct normal vector for mirror plane through origin
+//
+func mirror(x x: Int, y: Int, z: Int, shape: String) -> String {
+    let term = "mirror(v = [\(x), \(y), \(z)])"
+    return aggregate(term: term, shape: shape)
+}
+
 
 
 // ===========================================================================
@@ -140,6 +157,14 @@ extension SequenceType where Generator.Element == String {
     func difference_() -> String {
         if let array = self as? [String] {
             return difference(shapes: array)
+        } else {
+            return ""
+        }
+    }
+    
+    func hull_() -> String {
+        if let array = self as? [String] {
+            return hull(shapes: array)
         } else {
             return ""
         }

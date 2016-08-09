@@ -12,6 +12,14 @@ func write(string: String) {
     } catch {}
 }
 
+func openSCADExport(shape: String, directoryPath: String, fileName: String) {
+    let filePath = directoryPath + "/" + fileName + ".scad"
+    NSFileManager.defaultManager().createFileAtPath(filePath, contents: nil, attributes: nil)
+    do {
+        try shape.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
+    } catch {}
+}
+
 func write(shapes: [String]) {
     write(shapes.joinWithSeparator("\n"))
 }
