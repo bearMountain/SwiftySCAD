@@ -1,6 +1,7 @@
 # SwiftySCAD
 ##A Swift framework to generate 3D models.  
-- Swift to OpenSCAD to .stl
+Exports to OpenSCAD and .stl
+<br><br><br><br>
 
 ##Write awesome functional 3D modeling code in Swift  
 
@@ -14,7 +15,7 @@
 
 ##Enjoy the Three Dimensional fruits of your labor in the OpenSCAD IDE  
 
-<img src="https://github.com/bearMountain/SwiftySCAD/blob/dev/GitResources/RenderedTire.png" width="500">
+<img src="https://github.com/bearMountain/SwiftySCAD/blob/dev/GitResources/RenderedTire.png" width="400">
 <br><br><br><br>
 
 
