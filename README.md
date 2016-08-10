@@ -3,7 +3,7 @@ A Swift framework to generate 3D models.  Outputs an OpenSCAD file.
 
 Write awesome functional 3D modeling code in Swift  
 
-![Swift Code](https://github.com/bearMountain/SwiftySCAD/blob/dev/GitResources/RenderedTire.png)
+![Swift Code](https://github.com/bearMountain/SwiftySCAD/blob/dev/GitResources/SwiftCode.png)
 
 Beautifully formatted OpenSCAD is automatically output
 
