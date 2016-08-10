@@ -4,15 +4,18 @@
 
 ##Write awesome functional 3D modeling code in Swift  
 
-![Swift Code](https://github.com/bearMountain/SwiftySCAD/blob/dev/GitResources/SwiftCode.png)
+<img src="https://github.com/bearMountain/SwiftySCAD/blob/dev/GitResources/SwiftCode.png" width="700">  
+  
+    
+    
 
 ##Beautifully formatted OpenSCAD is automatically output  
 
-![SCAD Code](https://github.com/bearMountain/SwiftySCAD/blob/dev/GitResources/SCADCode.png)
+<img src="https://github.com/bearMountain/SwiftySCAD/blob/dev/GitResources/SCADCode.png" width="700">
 
 ##Enjoy the Three Dimensional fruits of your labor in the OpenSCAD IDE  
 
-![3D Tire](https://github.com/bearMountain/SwiftySCAD/blob/dev/GitResources/RenderedTire.png)
+<img src="https://github.com/bearMountain/SwiftySCAD/blob/dev/GitResources/RenderedTire.png" width="700">
 
 
 Created by [Jeff Camealy](https://itunes.apple.com/us/podcast/drawing-connections-podcast/id1131974120?mt=2) and [Dave Nassar](https://www.linkedin.com/in/davidnassar)
