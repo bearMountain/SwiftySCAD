@@ -92,6 +92,7 @@ let ridged = [together, cuts].difference_()
 
 
 openSCADExport(ridged, directoryPath: "/Users/jeff/Documents/OpenSCAD", fileName: "wheel")
+testEverything()
 
 
 

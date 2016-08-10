@@ -1,0 +1,16 @@
+
+
+
+
+import Foundation
+
+extension String {
+    func repeatBy(numRepeats: Int) -> String {
+        var output = ""
+        for _ in 0..<numRepeats {
+            output += self
+        }
+        
+        return output
+    }
+}

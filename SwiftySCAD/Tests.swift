@@ -16,5 +16,26 @@ func testEverything() {
     
     // Elipse Distance
     let dist = distance(elipseWidth: 6, elipseHeight: 4, angle: 90)
-    assert(dist == 4)
+    assert(dist == 2.0)
+    
+    // Formatting1
+    _ = {
+        let unformatted = "rotate([0.0, 0.0, 342.0]) {\ncube([3.0, 13.5, 3.0], center = true);\n}\n"
+        let formatted = formatOutput(unformatted)
+        print(formatted)
+    }()
+    
+    // Formatting2
+    _ = {
+        let unformatted = "rotate([0.0, 0.0, 342.0]) {\ntranslate([0.0, 19.92, 0.0]) {\ncube([3.0, 13.5, 3.0], center = true);\n}\n}\n"
+        let formatted = formatOutput(unformatted)
+        print(formatted)
+    }()
+    
+    // Formatting3
+    _ = {
+        let unformatted = "rotate([0.0, 0.0, 342.0]) {\ntranslate([0.0, 19.92, 0.0]) {\nrotate([90.0, 0.0, 0.0]) {\nmatrix = [\n[ 1, 20.0/45, 0.0/45, 0 ],\n[ 0.0/45, 1, 0.0/45, 0 ],\n[ 0.0/45, 0.0/45, 1, 0 ],\n[ 0, 0, 0, 1 ]\n];\nmultmatrix(matrix) {\ntranslate([0.0, 6.75, 0.0]) {\ncube([3.0, 13.5, 3.0], center = true);\n}\n}\n}\n}\n}"
+        let formatted = formatOutput(unformatted)
+        print(formatted)
+    }()
 }
