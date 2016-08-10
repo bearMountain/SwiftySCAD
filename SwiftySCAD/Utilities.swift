@@ -32,6 +32,15 @@ func formatOutput(unformattedOutput: String) -> String {
     var indentationLevel: Int = 0
     
     for line in unformattedOutput.componentsSeparatedByString("\n") {
+//        let top = line.numberOf("{")
+        let bottom = line.numberOf("}")
+        if (bottom > 1) {
+            print("j")
+        }
+        
+//        print("number of '{': \()")
+//        print("number of '}': \(line.numberOf("}"))")
+        
         if line.containsString("}") {
             indentationLevel -= 1
         }

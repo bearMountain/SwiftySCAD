@@ -90,7 +90,7 @@ func mirror(x x: Int, y: Int, z: Int, shape: String) -> String {
 func aggregate(term term: String, shapes: [String]) -> String {
     var string = "\(term) {\n"
     string += (shapes.joinWithSeparator("\n"))
-    string += "\n}\n"
+    string += "\n}"
     
     return string
 }
@@ -98,7 +98,7 @@ func aggregate(term term: String, shapes: [String]) -> String {
 func aggregate(term term: String, shape: String) -> String {
     var string = "\(term) {\n\t"
     string += shape
-    string += "\n}\n"
+    string += "\n}"
     
     return string
 }
@@ -163,7 +163,7 @@ extension String {
             "[ 0, 0, 0, 1 ]",
         "];"]
         
-        let expression = "multmatrix(matrix) {\n" + self + "}"
+        let expression = "multmatrix(matrix) {\n" + self + "\n}"
 
 
         return matrix.joinWithSeparator("\n") + "\n" + expression

@@ -13,4 +13,10 @@ extension String {
         
         return output
     }
+    
+    func numberOf(string: String) -> Int {
+        let components = self.componentsSeparatedByString(string)
+        return components.count - 1
+    }
 }
+
