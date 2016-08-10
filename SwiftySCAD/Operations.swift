@@ -141,6 +141,35 @@ func solidFrom(curve f: (Float)->(Float), maxX: Float = 1, resolution: Float = 1
     return hull(shapes: placeholders)
 }
 
+extension String {
+    func radialArray(numCopies: Int) -> String {
+        let angle = 360.0/Float(numCopies)
+        var copies: [String] = []
+        
+        for i in 0..<numCopies {
+            let copy = self.rotate_(x: 0, y: 0, z: angle*Float(i))
+            copies.append(copy)
+        }
+        
+        return copies.and()
+    }
+    
+
+    func skew(xOnY xOnY: Float = 0, xOnZ: Float = 0, yOnX: Float = 0, yOnZ: Float = 0, zOnX: Float = 0, zOnY: Float = 0) -> String {
+        let matrix = ["matrix = [",
+            "[ 1, \(xOnY)/45, \(xOnZ)/45, 0 ],",
+            "[ \(yOnX)/45, 1, \(zOnX)/45, 0 ],",
+            "[ \(zOnY)/45, \(yOnZ)/45, 1, 0 ],",
+            "[ 0, 0, 0, 1 ]",
+        "];"]
+        
+        let expression = "multmatrix(matrix) {" + self + "}"
+
+
+        return matrix.joinWithSeparator("\n") + expression
+    }
+}
+
 extension SequenceType where Generator.Element == String {
     func and() -> String {
         return self.joinWithSeparator("\n")
