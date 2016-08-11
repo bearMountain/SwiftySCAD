@@ -5,26 +5,41 @@
 
 import Foundation
 
-func write(string: String) {
-    NSFileManager.defaultManager().createFileAtPath("/Users/jeff/Test.scad", contents: nil, attributes: nil)
-    do {
-        try string.writeToFile("/Users/jeff/Test.scad", atomically: true, encoding: NSUTF8StringEncoding)
-    } catch {}
-}
+let ProjectPath = "/Users/jeff/Documents/Branch Computing/SwiftySCAD/SwiftySCAD"
+
 
 func openSCADExport(shape: String, directoryPath: String, fileName: String) {
     let formattedShape = formatOutput(shape)
+    let projectFolderPath = directoryPath + "/" + fileName
+    let filePath = projectFolderPath + "/" + fileName + ".scad"
     
-    let filePath = directoryPath + "/" + fileName + ".scad"
+    do {
+        try NSFileManager.defaultManager().createDirectoryAtPath(projectFolderPath, withIntermediateDirectories: false, attributes: nil)
+    } catch {}
+    
     NSFileManager.defaultManager().createFileAtPath(filePath, contents: nil, attributes: nil)
     do {
         try formattedShape.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
     } catch {}
+    
+    
+    do {
+        let j = NSBundle.mainBundle().resourcePath
+        let p = NSFileManager.defaultManager().currentDirectoryPath
+        try NSFileManager.defaultManager().copyItemAtPath("", toPath: "")
+    } catch {}
+
 }
 
-func write(shapes: [String]) {
-    write(shapes.joinWithSeparator("\n"))
-}
+//private func write(content content: String, toPath path: String) {
+//    NSFileManager.defaultManager().createDirectoryAtPath("", withIntermediateDirectories: false, attributes: nil)
+//    
+//    NSFileManager.defaultManager().createFileAtPath(path, contents: nil, attributes: nil)
+//    do {
+//        try content.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+//    } catch {}
+//}
+
 
 
 func formatOutput(unformattedOutput: String) -> String {

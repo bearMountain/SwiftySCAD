@@ -4,11 +4,6 @@
 
 import Foundation
 
-
-/// MAIN
-
-// convert everything to dot notation and Double
-
 // Dimensions
 let WheelDiameter: Float = 39.84
 let WheelWidth: Float = 21.84
@@ -62,7 +57,7 @@ func hub() -> String {
     
     let trapHeight = HubDiameter*0.7
     let trap = trapezoid(topWidth: TrapTopWidth, bottomWidth: TrapBaseWidth,
-                         height: trapHeight, thickness: TrapThickness)
+        height: trapHeight, thickness: TrapThickness)
         .rotate_(x: 90, y: 0, z: 0)
         .translate_(x: 0, y: trapHeight, z: 0)
         .radialArray(5)
@@ -70,45 +65,24 @@ func hub() -> String {
     return [cone, trap].union_()
 }
 
-let raisedHub = hub().translate_(x: 0, y: 0, z: InternalCylinderHeight+TrapThickness.half)
-
-let together = [wheel(), raisedHub].union_()
-
-//
-
-let cut = cube(x: TredWidth, y: TredLength, z: TredDepth*2.0)
-    .translate_(x: 0, y: TredLength.half, z: 0)
-    .skew(xOnY: TredAngle)
-    .rotate_(x: 90, y: 0, z: 0)
-    .translate_(x: 0, y: WheelDiameter.half, z: 0)
-    .radialArray(TredNum+1)
-let cut2 = mirror(x: 0, y: 0, z: 1, shape: cut)
-    .rotate_(x: 0, y: 0, z: TredAngle.half)
-let cuts = [cut, cut2].and()
-
-let ridged = [together, cuts].difference_()
-
-
-
-
-openSCADExport(ridged, directoryPath: "/Users/jeff/Documents/OpenSCAD", fileName: "wheel")
-testEverything()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func truckWheel() -> String {
+    let raisedHub = hub().translate_(x: 0, y: 0, z: InternalCylinderHeight+TrapThickness.half)
+    
+    let together = [wheel(), raisedHub].union_()
+    
+    //
+    
+    let cut = cube(x: TredWidth, y: TredLength, z: TredDepth*2.0)
+        .translate_(x: 0, y: TredLength.half, z: 0)
+        .skew(xOnY: TredAngle)
+        .rotate_(x: 90, y: 0, z: 0)
+        .translate_(x: 0, y: WheelDiameter.half, z: 0)
+        .radialArray(TredNum+1)
+    let cut2 = mirror(x: 0, y: 0, z: 1, shape: cut)
+        .rotate_(x: 0, y: 0, z: TredAngle.half)
+    let cuts = [cut, cut2].and()
+    
+    let ridged = [together, cuts].difference_()
+    
+    return ridged
+}
