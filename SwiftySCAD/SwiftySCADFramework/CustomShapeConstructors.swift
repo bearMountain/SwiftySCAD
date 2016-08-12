@@ -27,3 +27,7 @@ func solidFrom(curve f: (Double)->(Double), maxX: Double = 1, resolution: Double
     return placeholders.hull()
 }
 
+func bezierCurveSolid(p1 p1: Point, c1: Point, c2: Point, p2: Point, focalPoint: Point, height: Double, resolution: Double = 15, displayPoints: Bool = false) -> String {
+    return "BezQuadCurve( [[\(p1.x), \(p1.y)], [\(c1.x), \(c1.y)], [\(c2.x), \(c2.y)], [\(p2.x), \(p2.y)]], [\(focalPoint.x), \(focalPoint.y)], \(resolution), \(height), \(displayPoints));"
+}
+

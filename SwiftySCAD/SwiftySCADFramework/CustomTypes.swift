@@ -23,3 +23,7 @@ extension Point {
         return "[\(x), \(y)]"
     }
 }
+
+func p(x: Double,_ y: Double) -> Point {
+    return Point(x: x, y: y)
+}
