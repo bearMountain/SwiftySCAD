@@ -12,11 +12,6 @@ let DestinationDirectoryPath = "/Users/jeff/Documents/OpenSCAD"
 
 // convert everything to dot notation and Double
 
-struct Point {
-    var x: Double
-    var y: Double
-}
-
 func p(x: Double,_ y: Double) -> Point {
     return Point(x: x, y: y)
 }
@@ -28,16 +23,19 @@ func bezierCurveSolid(p1 p1: Point, c1: Point, c2: Point, p2: Point, focalPoint:
 let curve = bezierCurveSolid(p1: p(0,0), c1: p(0,10), c2: p(20,5), p2: p(20,0), focalPoint: p(0,0), height: 10, resolution: 25, displayPoints: true)
     .translate_(x: 10, y: 10, z: 0)
 
+// ================================================================================================
+// Constants
+// ================================================================================================
 
 let defaultCurveResolution = 20.0
 
 // Truck Body
 struct TBody {
-    static let height = 48.0
+    static let height = 52.5
     static let width = 52.0
     static let bigBlockWidth = 30.0
     static let smallBlockWidth = 35.0
-    static let smallBlockHeight = 27.5
+    static let smallBlockHeight = TBody.height-20
     
     // Windshield Curve
     static let windshieldP1 = p(-15.5, 0)
@@ -50,8 +48,15 @@ struct TBody {
     static let hoodP2 = p(0, 6)
     static let hoodC1 = p(TBody.hoodP1.x+3.5, 3.5)
     static let hoodC2 = p(-3.5, TBody.hoodP2.y-0.5)
-
 }
+
+let bumperWidth = 5.0
+let bumperPoints = [p(0,0), p(0, 17.5), p(-bumperWidth, 12.5), p(-bumperWidth, 4), p(-(bumperWidth-3.0), 0)]
+
+
+// ================================================================================================
+// Construction
+// ================================================================================================
 
 let bigBlock = cube(x: TBody.bigBlockWidth, y: TBody.width, z: TBody.height)
     .translate_(x: -TBody.bigBlockWidth, y: 0, z: 0)
@@ -70,15 +75,16 @@ let hoodCurve = bezierCurveSolid(p1: TBody.hoodP1, c1: TBody.hoodC1, c2: TBody.h
 
 
 
+let bumper = polygon(bumperPoints)
+    .linearExtrusion(height: TBody.width)
+    .rotate_(x: 90, y: 0, z: 0)
+    .translate_(x: -(TBody.bigBlockWidth+TBody.smallBlockWidth), y: TBody.width, z: 0)
 
-//let truckBody = [bigBlock, littleBlock, hoodCurve].union_()
-let truckBody = [bigBlock, littleBlock, windshieldCurve, hoodCurve].union_()
 
+
+
+let truckBody = [bigBlock, littleBlock, windshieldCurve, hoodCurve, bumper].union_()
 truckBody.exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "flatbed", swiftySCADProjectPath: ProjectPath)
-
-
-
-
 
 
 
