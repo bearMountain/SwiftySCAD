@@ -34,48 +34,48 @@ private func mainTube() -> String {
     
     
     let taperedCylinder = cylinder(topDiameter: tubeTopDiameter, bottomDiameter: tubeBottomDiameter, height: clipHeight)
-        .scale_(x: cylinderSquishRatio, y: 1, z: 1)
+        .scale(x: cylinderSquishRatio, y: 1, z: 1)
     
     let trap = trapezoid(topWidth: trapTopWidth+trapSlop,
                       bottomWidth: trapBottomWith+trapSlop,
                            height: clipHeight,
                         thickness: clipSpacerThickness)
-        .rotate_(x: -1.1, y: 0, z: 0)
-        .translate_(x: 0, y: clipSpacerThickness.half+dist-tiltSlop+2, z: 0)
-        .rotate_(x: 0, y: 0, z: -rotationAngle)
+        .rotate(x: -1.1, y: 0, z: 0)
+        .translate(x: 0, y: clipSpacerThickness.half+dist-tiltSlop+2, z: 0)
+        .rotate(x: 0, y: 0, z: -rotationAngle)
     
     
-    let blank = hull(shapes: [taperedCylinder, trap])
+    let blank = [taperedCylinder, trap].hull()
     
     let w = tubeBottomDiameter.half
     let scaleFactor = (wallThickness+w)/w
     
-    let main = blank.scale_(x: scaleFactor, y: scaleFactor, z: 1)
-    let scaledBlank = blank.scale_(x: 1, y: 1, z: 2)
-        .translate_(x: 0, y: 0, z: -1)
+    let main = blank.scale(x: scaleFactor, y: scaleFactor, z: 1)
+    let scaledBlank = blank.scale(x: 1, y: 1, z: 2)
+        .translate(x: 0, y: 0, z: -1)
     
-    let tube = difference(shapes: [main, scaledBlank])
+    let tube = [main, scaledBlank].difference()
     
     let trapCutter = trapezoid(topWidth: 20, bottomWidth: 16, height: clipHeight+1, thickness: clipSpacerThickness)
-        .rotate_(x: -1.1, y: 0, z: 0)
-        .translate_(x: 0, y: clipSpacerThickness.half+dist-tiltSlop+2+3.5, z: 0)
-        .rotate_(x: 0, y: 0, z: -rotationAngle)
-        .scale_(x: scaleFactor, y: scaleFactor, z: 1)
-        .translate_(x: 0, y: 0, z: -0.1)
+        .rotate(x: -1.1, y: 0, z: 0)
+        .translate(x: 0, y: clipSpacerThickness.half+dist-tiltSlop+2+3.5, z: 0)
+        .rotate(x: 0, y: 0, z: -rotationAngle)
+        .scale(x: scaleFactor, y: scaleFactor, z: 1)
+        .translate(x: 0, y: 0, z: -0.1)
     
-    let piece = difference(shapes: [tube, trapCutter])
+    let piece = [tube, trapCutter].difference()
     
     return piece
 }
 
 private func bracketWithHole() -> String {
     let bracket = cube(x: bracketWidth, y: wallThickness, z: bracketHeight)
-        .translate_(x: 0, y: 0, z: bracketHeight.half)
+        .translate(x: 0, y: 0, z: bracketHeight.half)
     let holeForm = cylinder(diameter: boltDiameter, height: wallThickness*2)
-        .rotate_(x: 90, y: 0, z: 0)
-        .translate_(x: bracketWidth.half-holeInset, y: 0, z: bracketHeight.half)
+        .rotate(x: 90, y: 0, z: 0)
+        .translate(x: bracketWidth.half-holeInset, y: 0, z: bracketHeight.half)
     
-    let bracketWithHole = difference(shapes: [bracket, holeForm])
+    let bracketWithHole = [bracket, holeForm].difference()
     
     return bracketWithHole
 }
@@ -83,26 +83,26 @@ private func bracketWithHole() -> String {
 private func bracketWithHex() -> String {
     let bracket = bracketWithHole()
     let hex = hexagon(width: 6.3, thickness: hexThickness)
-        .rotate_(x: -90, y: 0, z: 0)
-        .translate_(x: bracketWidth.half-holeInset, y: wallThickness.half-hexThickness+epsilon, z: bracketHeight.half)
+        .rotate(x: -90, y: 0, z: 0)
+        .translate(x: bracketWidth.half-holeInset, y: wallThickness.half-hexThickness+epsilon, z: bracketHeight.half)
     
-    let piece = difference(shapes: [bracket, hex])
+    let piece = [bracket, hex].difference()
     
     return piece
 }
 
 private func brackets() -> String {
     let bHexBottom = bracketWithHex()
-        .rotate_(x: 180, y: 0, z: 0)
-        .translate_(x: 0, y: 0, z: bracketHeight)
+        .rotate(x: 180, y: 0, z: 0)
+        .translate(x: 0, y: 0, z: bracketHeight)
     let bHexTop = bHexBottom
-        .translate_(x: 0, y: 0, z: clipHeight-bracketHeight)
+        .translate(x: 0, y: 0, z: clipHeight-bracketHeight)
     
     let bHoleBottom = bracketWithHole()
-        .translate_(x: 0, y: bracketGap, z: 0)
+        .translate(x: 0, y: bracketGap, z: 0)
     
     let bHoleTop = bHoleBottom
-        .translate_(x: 0, y: 0, z: clipHeight-bracketHeight)
+        .translate(x: 0, y: 0, z: clipHeight-bracketHeight)
     
     return [bHexBottom, bHexTop, bHoleBottom, bHoleTop].and()
 }
@@ -110,21 +110,21 @@ private func brackets() -> String {
 private func uncutBracket() -> String {
     let tube = mainTube()
     let brackets_ = brackets()
-        .translate_(x: bracketWidth-curveSlop, y: -5, z: 0)
-        .rotate_(x: 0, y: 0, z: -rotationAngle)
+        .translate(x: bracketWidth-curveSlop, y: -5, z: 0)
+        .rotate(x: 0, y: 0, z: -rotationAngle)
     
-    let bracket = [brackets_, tube].union_()
+    let bracket = [brackets_, tube].union()
     
     return bracket
 }
 
 func cutBracket() -> String {
     let splitBlank = cube(x: wallThickness*2.0, y: bracketGap-wallThickness, z: clipHeight+big_epsilon)
-        .translate_(x: 0, y: 0, z: clipHeight.half)
-        .translate_(x: 10, y: 4.2, z: 0)
-        .rotate_(x: 0, y: 0, z: -rotationAngle)
+        .translate(x: 0, y: 0, z: clipHeight.half)
+        .translate(x: 10, y: 4.2, z: 0)
+        .rotate(x: 0, y: 0, z: -rotationAngle)
     
-    let cutBracket = [uncutBracket(), splitBlank].difference_()
+    let cutBracket = [uncutBracket(), splitBlank].difference()
     
     return cutBracket
 }

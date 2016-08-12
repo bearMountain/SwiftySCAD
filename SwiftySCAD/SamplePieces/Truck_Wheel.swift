@@ -31,58 +31,56 @@ func wheel() -> String {
     let cOffset = WheelDiameter.half-WheelTopChamferDiameter.half
     
     let c1 = circle(WheelTopChamferDiameter)
-        .translate_(x: cOffset, y: 5, z: 0)
-    let c2 = mirror(x: 0, y: 1, z: 0, shape: c1)
+        .translate(x: cOffset, y: 5, z: 0)
+    let c2 = c1.mirror(x: 0, y: 1, z: 0)
     
     let raceTrack = [c1, c2]
-        .hull_()
-    let raceTrackTorus = rotate_extrude(resolution: 100, shape: raceTrack)
+        .hull()
+    let raceTrackTorus = raceTrack.rotate_extrude(resolution: 100)
     
     let internalCylinder = cylinder(diameter: WheelDiameter-WheelTopChamferDiameter*2.0, height: InternalCylinderHeight)
-        .translate_(x: 0, y: 0, z: InternalCylinderHeight.half)
+        .translate(x: 0, y: 0, z: InternalCylinderHeight.half)
     
-    let wheelWithInternalCylinder = [raceTrackTorus, internalCylinder].union_()
+    let wheelWithInternalCylinder = [raceTrackTorus, internalCylinder].union()
     
     let rodNegative = cylinder(diameter: RodDiameter, height: RodTipLength+epsilon)
-        .translate_(x: 0, y: 0, z: RodTipLength.half)
+        .translate(x: 0, y: 0, z: RodTipLength.half)
     
-    let wheelWithRodSlot = [wheelWithInternalCylinder, rodNegative].difference_()
+    let wheelWithRodSlot = [wheelWithInternalCylinder, rodNegative].difference()
     
     return wheelWithRodSlot
 }
 
 func hub() -> String {
     let cone = cylinder(topDiameter: 0, bottomDiameter: ConeBaseDiameter, height: ConeHeight)
-        .translate_(x: 0, y: 0, z: TrapThickness.half)
+        .translate(x: 0, y: 0, z: TrapThickness.half)
     
     let trapHeight = HubDiameter*0.7
     let trap = trapezoid(topWidth: TrapTopWidth, bottomWidth: TrapBaseWidth,
         height: trapHeight, thickness: TrapThickness)
-        .rotate_(x: 90, y: 0, z: 0)
-        .translate_(x: 0, y: trapHeight, z: 0)
+        .rotate(x: 90, y: 0, z: 0)
+        .translate(x: 0, y: trapHeight, z: 0)
         .radialArray(5)
     
-    return [cone, trap].union_()
+    return [cone, trap].union()
 }
 
 func truckWheel() -> String {
-    let raisedHub = hub().translate_(x: 0, y: 0, z: InternalCylinderHeight+TrapThickness.half)
+    let raisedHub = hub().translate(x: 0, y: 0, z: InternalCylinderHeight+TrapThickness.half)
     
-    let together = [wheel(), raisedHub].union_()
-    
-    //
+    let together = [wheel(), raisedHub].union()
     
     let cut = cube(x: TredWidth, y: TredLength, z: TredDepth*2.0)
-        .translate_(x: 0, y: TredLength.half, z: 0)
+        .translate(x: 0, y: TredLength.half, z: 0)
         .skew(xOnY: TredAngle)
-        .rotate_(x: 90, y: 0, z: 0)
-        .translate_(x: 0, y: WheelDiameter.half, z: 0)
+        .rotate(x: 90, y: 0, z: 0)
+        .translate(x: 0, y: WheelDiameter.half, z: 0)
         .radialArray(TredNum+1)
-    let cut2 = mirror(x: 0, y: 0, z: 1, shape: cut)
-        .rotate_(x: 0, y: 0, z: TredAngle.half)
+    let cut2 = cut.mirror(x: 0, y: 0, z: 1)
+        .rotate(x: 0, y: 0, z: TredAngle.half)
     let cuts = [cut, cut2].and()
     
-    let ridged = [together, cuts].difference_()
+    let ridged = [together, cuts].difference()
     
     return ridged
 }

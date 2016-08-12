@@ -40,8 +40,8 @@ func trapezoid(topWidth topWidth: Double, bottomWidth: Double, height: Double, t
     
     let points = "points=[[\(halfBottom),0], [\(halfTop),\(height)], [\(-halfTop),\(height)], [\(-halfBottom),0]]"
     let layingTrap = "linear_extrude(height = \(thickness)) polygon(\(points), paths=[[0,1,2,3]]);"
-    let verTrap = rotate(x: 90, y: 0, z: 0, shape: layingTrap)
-    let centeredTrap = translate(x: 0, y: thickness/2.0, z: 0, shape: verTrap)
+    let verTrap = layingTrap.rotate(x: 90, y: 0, z: 0)
+    let centeredTrap = verTrap.translate(x: 0, y: thickness/2.0, z: 0)
     
     return centeredTrap
 }

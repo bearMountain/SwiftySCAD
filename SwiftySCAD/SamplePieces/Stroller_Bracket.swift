@@ -8,11 +8,11 @@ import Foundation
 func stroller_bracket() -> String {
     let span: Double = 330
     let gripBonus: Double = 3
-    let barDiameter: Double = 6.5
-    let forkWidth: Double = 50
+//    let barDiameter: Double = 6.5
+//    let forkWidth: Double = 50
     
     let length = span+gripBonus*2
-    let blank = cube(x: length, y: forkWidth, z: length)
+//    let blank = cube(x: length, y: forkWidth, z: length)
     
     
 
@@ -34,9 +34,9 @@ func stroller_bracket() -> String {
                          resolution: 30,
                         displaySize: voidSize,
                          seedObject: voidSeed)
-    let droppedCopy = translate(x: 0, y: 0, z: -15, shape: blankVoid)
+    let droppedCopy = blankVoid.translate(x: 0, y: 0, z: -15)
     
-    let piece = difference(shapes: [curvedBlank, droppedCopy])
+    let piece = [curvedBlank, droppedCopy].difference()
     
     return piece
 }

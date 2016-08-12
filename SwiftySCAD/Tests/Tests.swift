@@ -45,6 +45,17 @@ func testEverything() {
         let poly = polygon(points)
         assert(poly == "polygon(points=[[0.0, 0.0], [100.0, 0.0], [130.0, 50.0], [30.0, 50.0]]);")
     }()
+    
+    // Union
+    _ = {
+        let c1 = cube(x: 1, y: 2, z: 3)
+        let c2 = cube(x: 4, y: 5, z: 6)
+        let u = [c1, c2].union()
+        assert(u == "union() {\n" +
+            "cube([1.0, 2.0, 3.0], center = false);\n" +
+            "cube([4.0, 5.0, 6.0], center = false);\n" +
+            "}")
+    }()
 }
 
 
