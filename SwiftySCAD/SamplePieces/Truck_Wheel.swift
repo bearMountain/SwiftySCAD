@@ -5,25 +5,25 @@
 import Foundation
 
 // Dimensions
-let WheelDiameter: Float = 39.84
-let WheelWidth: Float = 21.84
-let HubDiameter: Float = 17.25
-let WheelTopChamferDiameter: Float = (WheelDiameter-HubDiameter)/2.0
+let WheelDiameter: Double = 39.84
+let WheelWidth: Double = 21.84
+let HubDiameter: Double = 17.25
+let WheelTopChamferDiameter: Double = (WheelDiameter-HubDiameter)/2.0
 let InternalCylinderHeight = WheelWidth.half-WheelTopChamferDiameter.half
 
-let RodDiameter: Float = 2.0
-let RodTipLength: Float = 5.2
+let RodDiameter: Double = 2.0
+let RodTipLength: Double = 5.2
 
-let ConeBaseDiameter: Float = 2.5
-let ConeHeight: Float = 3.0
-let TrapTopWidth: Float = 1.0
-let TrapBaseWidth: Float = 3.5
-let TrapThickness: Float = 2.0
+let ConeBaseDiameter: Double = 2.5
+let ConeHeight: Double = 3.0
+let TrapTopWidth: Double = 1.0
+let TrapBaseWidth: Double = 3.5
+let TrapThickness: Double = 2.0
 
-let TredWidth: Float = 3.0
-let TredLength: Float = 13.5
-let TredDepth: Float = 1.5
-let TredAngle: Float = 20.0
+let TredWidth: Double = 3.0
+let TredLength: Double = 13.5
+let TredDepth: Double = 1.5
+let TredAngle: Double = 20.0
 let TredNum: Int = 19
 
 // Construction

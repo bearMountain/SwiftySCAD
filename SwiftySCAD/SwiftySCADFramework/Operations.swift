@@ -9,12 +9,12 @@ import Foundation
 //
 // translate([1,2,3]) {}
 //
-func translate(x x: Float, y: Float, z: Float, shapes: ()->(String)) -> String {
+func translate(x x: Double, y: Double, z: Double, shapes: ()->(String)) -> String {
     let term = "translate([\(x), \(y), \(z)])"
     return aggregate(term: term, shapes: [shapes()])
 }
 
-func translate(x x: Float, y: Float, z: Float, shape: String) -> String {
+func translate(x x: Double, y: Double, z: Double, shape: String) -> String {
     return translate(x: x, y: y, z: z) {
         return shape
     }
@@ -45,7 +45,7 @@ func intersection(shapes shapes:[String]) -> String {
 //
 // rotate([90, 0, 0]) {}
 //
-func rotate(x x: Float, y: Float, z: Float, shape: String) -> String {
+func rotate(x x: Double, y: Double, z: Double, shape: String) -> String {
     let term = "rotate([\(x), \(y), \(z)])"
     return aggregate(term: term, shape: shape)
 }
@@ -60,7 +60,7 @@ func hull(shapes shapes:[String]) -> String {
 //
 // scale([1, 2, 3]) {}
 //
-func scale(x x: Float, y: Float, z: Float, shape: String) -> String {
+func scale(x x: Double, y: Double, z: Double, shape: String) -> String {
     let term = "scale([\(x), \(y), \(z)])"
     return aggregate(term: term, shape: shape)
 }
@@ -105,20 +105,20 @@ func aggregate(term term: String, shape: String) -> String {
 
 
 extension String {
-    func translate_(x x: Float, y: Float, z: Float) -> String {
+    func translate_(x x: Double, y: Double, z: Double) -> String {
         return translate(x: x, y: y, z: z, shape: self)
     }
     
-    func rotate_(x x: Float, y: Float, z: Float) -> String {
+    func rotate_(x x: Double, y: Double, z: Double) -> String {
         return rotate(x: x, y: y, z: z, shape: self)
     }
     
-    func scale_(x x: Float, y: Float, z: Float) -> String {
+    func scale_(x x: Double, y: Double, z: Double) -> String {
         return scale(x: x, y: y, z: z, shape: self)
     }
 }
 
-func solidFrom(curve f: (Float)->(Float), maxX: Float = 1, resolution: Float = 10, displaySize: Size, seedObject: String) -> String
+func solidFrom(curve f: (Double)->(Double), maxX: Double = 1, resolution: Double = 10, displaySize: Size, seedObject: String) -> String
 {
     let numericalStep = (maxX*2.0)/resolution
     let xVals = maxX.stride(to: -(maxX), by: -numericalStep)
@@ -143,11 +143,11 @@ func solidFrom(curve f: (Float)->(Float), maxX: Float = 1, resolution: Float = 1
 
 extension String {
     func radialArray(numCopies: Int) -> String {
-        let angle = 360.0/Float(numCopies)
+        let angle = 360.0/Double(numCopies)
         var copies: [String] = []
         
         for i in 0..<numCopies {
-            let copy = self.rotate_(x: 0, y: 0, z: angle*Float(i))
+            let copy = self.rotate_(x: 0, y: 0, z: angle*Double(i))
             copies.append(copy)
         }
         
@@ -155,7 +155,7 @@ extension String {
     }
     
 
-    func skew(xOnY xOnY: Float = 0, xOnZ: Float = 0, yOnX: Float = 0, yOnZ: Float = 0, zOnX: Float = 0, zOnY: Float = 0) -> String {
+    func skew(xOnY xOnY: Double = 0, xOnZ: Double = 0, yOnX: Double = 0, yOnZ: Double = 0, zOnX: Double = 0, zOnY: Double = 0) -> String {
         let matrix = ["matrix = [",
             "[ 1, \(xOnY)/45, \(xOnZ)/45, 0 ],",
             "[ \(yOnX)/45, 1, \(zOnX)/45, 0 ],",
@@ -172,7 +172,7 @@ extension String {
     //
     // linear_extrude(height = \(thickness))
     //
-    func linearExtrusion(height height: Float) -> String {
+    func linearExtrusion(height height: Double) -> String {
         let term = "linear_extrude(height = \(height))"
         return aggregate(term: term, shape: self)
     }

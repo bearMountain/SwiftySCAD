@@ -6,10 +6,10 @@
 import Foundation
 
 func stroller_bracket() -> String {
-    let span: Float = 330
-    let gripBonus: Float = 3
-    let barDiameter: Float = 6.5
-    let forkWidth: Float = 50
+    let span: Double = 330
+    let gripBonus: Double = 3
+    let barDiameter: Double = 6.5
+    let forkWidth: Double = 50
     
     let length = span+gripBonus*2
     let blank = cube(x: length, y: forkWidth, z: length)
@@ -17,7 +17,7 @@ func stroller_bracket() -> String {
     
 
     
-    let bracketCurve: (Float)->(Float) = { x in
+    let bracketCurve: (Double)->(Double) = { x in
         -pow(x, 10)
     }
     

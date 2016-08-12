@@ -12,27 +12,16 @@ let DestinationDirectoryPath = "/Users/jeff/Documents/OpenSCAD"
 
 // convert everything to dot notation and Double
 
-//joinfactor = 0.125;
-//
-//gFocalPoint = [0,0];
-//gSteps = 20;
-//gHeight = 4;
-//
-//BezQuadCurve( [[0, 15],[5,5],[10,25],[15,15]], [7.5, 0], gSteps, gHeight);
-//
-// module BezQuadCurve(c, focalPoint, steps=gSteps, height=gHeight)
-//
-
 struct Point {
-    var x: Float
-    var y: Float
+    var x: Double
+    var y: Double
 }
 
-func p(x: Float,_ y: Float) -> Point {
+func p(x: Double,_ y: Double) -> Point {
     return Point(x: x, y: y)
 }
 
-func bezierCurveSolid(p1 p1: Point, c1: Point, c2: Point, p2: Point, focalPoint: Point, height: Float, resolution: Float = 15, displayPoints: Bool = false) -> String {
+func bezierCurveSolid(p1 p1: Point, c1: Point, c2: Point, p2: Point, focalPoint: Point, height: Double, resolution: Double = 15, displayPoints: Bool = false) -> String {
     return "BezQuadCurve( [[\(p1.x), \(p1.y)], [\(c1.x), \(c1.y)], [\(c2.x), \(c2.y)], [\(p2.x), \(p2.y)]], [\(focalPoint.x), \(focalPoint.y)], \(resolution), \(height), \(displayPoints));"
 }
 
@@ -46,11 +35,7 @@ let c = cylinder(radius: 10, height: 210)
 
 curve.exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "flatbed", swiftySCADProjectPath: ProjectPath)
 
-
-
-
-
-
+truckWheel().exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "truckWheel", swiftySCADProjectPath: ProjectPath)
 
 
 

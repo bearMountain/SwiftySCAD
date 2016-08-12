@@ -5,14 +5,14 @@ import Foundation
 
 func extruder_cullet() -> String {
     
-    let smallHoleDiameter: Float = 5.5
-    let largeHoleDiameter: Float = 9.4
-    let largeHoleWallThickness: Float = 3.0
-    let filamentDiameter: Float = 3.0
-    let filamentOffset: Float = 0.5
-    let smallHoleHeight: Float = 9.3
-    let largeHoleThreadHeight: Float = 5.4
-    let jointHeight: Float = 3.0
+    let smallHoleDiameter: Double = 5.5
+    let largeHoleDiameter: Double = 9.4
+    let largeHoleWallThickness: Double = 3.0
+    let filamentDiameter: Double = 3.0
+    let filamentOffset: Double = 0.5
+    let smallHoleHeight: Double = 9.3
+    let largeHoleThreadHeight: Double = 5.4
+    let jointHeight: Double = 3.0
     
     
     let smallCylinder = translate(x: 0, y: 0, z: -smallHoleHeight/2.0) {
