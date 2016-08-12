@@ -168,6 +168,14 @@ extension String {
 
         return matrix.joinWithSeparator("\n") + "\n" + expression
     }
+    
+    //
+    // linear_extrude(height = \(thickness))
+    //
+    func linearExtrusion(height height: Float) -> String {
+        let term = "linear_extrude(height = \(height))"
+        return aggregate(term: term, shape: self)
+    }
 }
 
 extension SequenceType where Generator.Element == String {

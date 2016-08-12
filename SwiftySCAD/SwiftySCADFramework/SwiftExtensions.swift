@@ -39,6 +39,9 @@ extension String {
         } catch {}
     }
     
+    //
+    // Will not override if file already exists
+    //
     func copyFile(toPath path: String) {
         do {
             try NSFileManager.defaultManager().copyItemAtPath(self, toPath: path)

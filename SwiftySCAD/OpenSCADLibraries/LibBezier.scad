@@ -26,20 +26,21 @@ function PointAlongBez4(p0, p1, p2, p3, u) = [
 // Modules
 //=======================================
 // c - ControlPoints
-module BezQuadCurve(c, focalPoint, steps=gSteps, height=gHeight)
+module BezQuadCurve(c, focalPoint, steps=gSteps, height=gHeight, showPoints)
 {
-	// Draw control points
-	// Just comment this out when you're doing the real thing
-	for(point=[0:3])
-	{
-		translate(c[point])
-		color([1,0,0])
-		cylinder(r=1, h=height+joinfactor);
-	}
+    if (showPoints) {
+        // Draw control points
+        for(point=[0:3])
+        {
+            translate(c[point])
+            color([1,0,0])
+            cylinder(r=1, h=height+joinfactor);
+        }
+    }
 
 	for(step = [1:steps])
 	{
-//		linear_extrude(height = height, convexity = 10) 
+		linear_extrude(height = height, convexity = 10) 
 		polygon(
 			points=[
 				focalPoint,

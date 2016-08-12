@@ -5,32 +5,34 @@
 
 import Foundation
 
-let ProjectPath = "/Users/jeff/Documents/Branch Computing/SwiftySCAD/SwiftySCAD"
 
 // Export
-func openSCADExport(shape: String, directoryPath: String, fileName: String) {
-    // Project Paths
-    let projectFolderPath = directoryPath + "/" + fileName
-    let shapePath = projectFolderPath + "/" + fileName + ".scad"
-    
-    // Lib Paths
-    let libPath = ProjectPath + "/" + "SwiftySCAD/OpenSCADLibraries/LibBezier.scad"
-    let libDestinationFolder = projectFolderPath + "/OpenSCADLibraries"
-    let libDestinationPath = libDestinationFolder + "/LibBezier.scad"
-    
-    // Formatted Shape
-    let formattedShape = postProcess(shape: shape, openSCADLibraryFolderPath: libDestinationFolder)
-    
-    
-    // Write Project and Shape
-    projectFolderPath.createDirectory()
-    shapePath.createFile()
-    shapePath.writeContent(formattedShape)
-    
-    // Add Libs
-    libDestinationFolder.createDirectory()
-    libPath.copyFile(toPath: libDestinationPath)
+extension String {
+    func exportAsOpenSCAD(destinationDirectoryPath destinationDirectoryPath: String, fileName: String, swiftySCADProjectPath: String) {
+        // Project Paths
+        let projectFolderPath = destinationDirectoryPath + "/" + fileName
+        let shapePath = projectFolderPath + "/" + fileName + ".scad"
+        
+        // Lib Paths
+        let libPath = swiftySCADProjectPath + "/" + "SwiftySCAD/OpenSCADLibraries/LibBezier.scad"
+        let libDestinationFolder = projectFolderPath + "/OpenSCADLibraries"
+        let libDestinationPath = libDestinationFolder + "/LibBezier.scad"
+        
+        // Formatted Shape
+        let formattedShape = postProcess(shape: self, openSCADLibraryFolderPath: libDestinationFolder)
+        
+        
+        // Write Project and Shape
+        projectFolderPath.createDirectory()
+        shapePath.createFile()
+        shapePath.writeContent(formattedShape)
+        
+        // Add Libs
+        libDestinationFolder.createDirectory()
+        libPath.copyFile(toPath: libDestinationPath)
+    }
 }
+
 
 // Post Processing
 func postProcess(shape shape: String, openSCADLibraryFolderPath libraryPath: String) -> String {
