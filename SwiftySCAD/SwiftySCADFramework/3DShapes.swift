@@ -25,8 +25,8 @@ func cylinder(topDiameter topDiameter: Double, bottomDiameter: Double, height: D
 //
 // cube([width + height, length, height], center = true);
 //
-func cube(x x: Double, y: Double, z: Double) -> String {
-    return "cube([\(x), \(y), \(z)], center = true);"
+func cube(x x: Double, y: Double, z: Double, center: Bool = false) -> String {
+    return "cube([\(x), \(y), \(z)], center = \(center));"
 }
 
 //
