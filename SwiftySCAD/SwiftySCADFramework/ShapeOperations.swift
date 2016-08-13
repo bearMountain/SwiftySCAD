@@ -56,6 +56,14 @@ extension String {
         let term = "mirror(v = [\(x), \(y), \(z)])"
         return self.aggregate(withTerm: term)
     }
+    
+    //
+    // color( [r, g, b, a] ) { ... }
+    //
+    func color(r r: Double, g: Double, b: Double, a: Double = 1) -> String {
+        let term = "color([\(r), \(g), \(b), \(a)])"
+        return self.aggregate(withTerm: term)
+    }
 
     func radialArray(numCopies: Int) -> String {
         let angle = 360.0/Double(numCopies)

@@ -70,7 +70,7 @@ func truckWheel() -> String {
     
     let together = [wheel(), raisedHub].union()
     
-    let cut = cube(x: TredWidth, y: TredLength, z: TredDepth*2.0)
+    let cut = cube(x: TredWidth, y: TredLength, z: TredDepth*2.0, center: true)
         .translate(x: 0, y: TredLength.half, z: 0)
         .skew(xOnY: TredAngle)
         .rotate(x: 90, y: 0, z: 0)

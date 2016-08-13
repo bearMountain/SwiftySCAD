@@ -101,13 +101,21 @@ let tire1 = cylinder(diameter: tireDiameter, height: tireWidth, center: false)
 let tire2 = tire1
     .translate(x: 0, y: TBody.width-(tireWidth-tireOutOverhang*2.0), z: 0)
 let tires = [tire1, tire2].union()
+    .color(r: 0.3, g: 0.3, b: 0.3)
+
+let backWindowWidth = TBody.bigBlockWidth*0.4
+let windowBaseLine = TBody.smallBlockHeight+TBody.hoodP2.y
+//let windowFrameWidth = TBody
+let backWindow = cube(x: backWindowWidth, y: TBody.width, z: 0)
 
 
 
 let truckBody = [bigBlock, littleBlock, windshieldCurve, hoodCurve, bumper].union()
 let bodyWithWell = [truckBody, well].difference()
 let bodyAndTires = [bodyWithWell, tires].and()
-bodyAndTires.exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "flatbed", swiftySCADProjectPath: ProjectPath)
+//bodyAndTires.exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "flatbed", swiftySCADProjectPath: ProjectPath)
+
+truckWheel().exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "tire", swiftySCADProjectPath: ProjectPath)
 
 
 
