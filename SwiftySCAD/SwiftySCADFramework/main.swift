@@ -40,6 +40,11 @@ struct TBody {
 let bumperWidth = 5.0
 let bumperPoints = [p(0,0), p(0, 17.5), p(-bumperWidth, 12.5), p(-bumperWidth, 4), p(-(bumperWidth-3.0), 0)]
 
+let wellCurveWidth = TBody.smallBlockWidth*0.75
+let wellCurveControlHeight = wellCurveWidth*0.25
+let wellCurveStartHeight = TBody.smallBlockHeight*0.3
+let wellStart = TBody.bigBlockWidth*0.8
+
 
 // ================================================================================================
 // Construction
@@ -60,18 +65,49 @@ let hoodCurve = bezierCurveSolid(p1: TBody.hoodP1, c1: TBody.hoodC1, c2: TBody.h
     .rotate(x: 90, y: 0, z: 0)
     .translate(x: -(TBody.bigBlockWidth)-(TBody.smallBlockWidth+TBody.hoodP1.x), y: TBody.width, z: TBody.smallBlockHeight)
 
-
-
 let bumper = polygon(bumperPoints)
     .linearExtrusion(height: TBody.width)
     .rotate(x: 90, y: 0, z: 0)
     .translate(x: -(TBody.bigBlockWidth+TBody.smallBlockWidth), y: TBody.width, z: 0)
 
 
+let wellCurve = [bezierCurveSolid(p1: p(-wellCurveWidth,0), c1: p(-wellCurveWidth, wellCurveControlHeight), c2: p(0, wellCurveControlHeight), p2: p(0,0), focalPoint: p(0,0), height: TBody.width)]
+    .hull()
+    .rotate(x: 90, y: 0, z: 0)
+    .translate(x: -wellStart, y: TBody.width, z: wellCurveStartHeight)
+
+let wellSquare = cube(x: wellCurveWidth, y: TBody.width, z: wellCurveStartHeight)
+    .translate(x: -(wellCurveWidth+wellStart), y: 0, z: 0)
+
+let wellTriangleHeight = 5.0
+let wellTriangle = polygon([p(0,0), p(0, wellTriangleHeight), p(-(wellTriangleHeight+2.5),0)])
+    .linearExtrusion(height: TBody.width)
+    .rotate(x: 90, y: 0, z: 0)
+    .translate(x: -(wellStart+wellCurveWidth), y: TBody.width, z: 0)
+let wellSliver = polygon([p(0,0), p(0,wellCurveStartHeight), p(wellCurveStartHeight*0.2,0)])
+    .linearExtrusion(height: TBody.width)
+    .rotate(x: 90, y: 0, z: 0)
+    .translate(x: -(wellStart), y: TBody.width, z: 0)
+
+let well = [wellCurve, wellSquare, wellTriangle, wellSliver].union()
+
+let tireDiameter = wellCurveWidth*1.2
+let tireWidth = tireDiameter*0.4
+let tireLift = wellCurveWidth.half*0.8
+let tireOutOverhang = tireWidth*0.5
+let tire1 = cylinder(diameter: tireDiameter, height: tireWidth, center: false)
+    .rotate(x: -90, y: 0, z: 0)
+    .translate(x: -(wellCurveWidth.half+wellStart), y: -tireOutOverhang, z: -tireLift)
+let tire2 = tire1
+    .translate(x: 0, y: TBody.width-(tireWidth-tireOutOverhang*2.0), z: 0)
+let tires = [tire1, tire2].union()
+
 
 
 let truckBody = [bigBlock, littleBlock, windshieldCurve, hoodCurve, bumper].union()
-truckBody.exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "flatbed", swiftySCADProjectPath: ProjectPath)
+let bodyWithWell = [truckBody, well].difference()
+let bodyAndTires = [bodyWithWell, tires].and()
+bodyAndTires.exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "flatbed", swiftySCADProjectPath: ProjectPath)
 
 
 

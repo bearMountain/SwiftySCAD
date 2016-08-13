@@ -7,12 +7,12 @@ import Foundation
 //
 // cylinder(r = 3.5, h = 1, center = true, $fn = 32);
 //
-func cylinder(radius radius: Double, height: Double, resolution: Int = 32) -> String {
-    return "cylinder(r = \(radius), h = \(height), center = true, $fn = \(resolution));"
+func cylinder(radius radius: Double, height: Double, center: Bool = true, resolution: Int = 32) -> String {
+    return "cylinder(r = \(radius), h = \(height), center = \(center), $fn = \(resolution));"
 }
 
-func cylinder(diameter diameter: Double, height: Double, resolution: Int = 32) -> String {
-    return cylinder(radius: diameter/2.0, height: height, resolution: resolution)
+func cylinder(diameter diameter: Double, height: Double, center: Bool = true, resolution: Int = 32) -> String {
+    return cylinder(radius: diameter/2.0, height: height, center: center, resolution: resolution)
 }
 
 //
