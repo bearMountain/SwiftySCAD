@@ -12,6 +12,12 @@ struct Size {
     var height: Double
 }
 
+extension Size {
+    func inset(widthBy width: Double, heightBy height: Double) -> Size {
+        return Size(width: self.width-width*2, height: self.height-height*2)
+    }
+}
+
 // Point
 struct Point {
     var x: Double

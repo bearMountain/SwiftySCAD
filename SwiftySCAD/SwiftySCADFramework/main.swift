@@ -50,6 +50,9 @@ let wellStart = TBody.bigBlockWidth*0.8
 // Construction
 // ================================================================================================
 
+//
+// Main Body
+//
 let bigBlock = cube(x: TBody.bigBlockWidth, y: TBody.width, z: TBody.height)
     .translate(x: -TBody.bigBlockWidth, y: 0, z: 0)
 
@@ -71,6 +74,9 @@ let bumper = polygon(bumperPoints)
     .translate(x: -(TBody.bigBlockWidth+TBody.smallBlockWidth), y: TBody.width, z: 0)
 
 
+//
+// Wheel Well
+//
 let wellCurve = [bezierCurveSolid(p1: p(-wellCurveWidth,0), c1: p(-wellCurveWidth, wellCurveControlHeight), c2: p(0, wellCurveControlHeight), p2: p(0,0), focalPoint: p(0,0), height: TBody.width)]
     .hull()
     .rotate(x: 90, y: 0, z: 0)
@@ -91,6 +97,9 @@ let wellSliver = polygon([p(0,0), p(0,wellCurveStartHeight), p(wellCurveStartHei
 
 let well = [wellCurve, wellSquare, wellTriangle, wellSliver].union()
 
+//
+// Tires
+//
 let tireDiameter = wellCurveWidth*1.2
 let tireWidth = tireDiameter*0.4
 let tireLift = wellCurveWidth.half*0.8
@@ -103,6 +112,9 @@ let tire2 = tire1
 let tires = [tire1, tire2].union()
     .color(r: 0.3, g: 0.3, b: 0.3)
 
+//
+// Side Windows
+//
 let backWindowWidth = TBody.bigBlockWidth*0.4
 let windowBaseLine = TBody.smallBlockHeight+TBody.hoodP2.y
 let windowFrameWidth = 3.0
@@ -122,14 +134,33 @@ let frontWindowBlank = polygon([
     .rotate(x: 90, y: 0, z: 0)
     .translate(x: -(windowFrameWidth*2+backWindowWidth), y: TBody.width+big_epsilon, z: windowBaseLine)
 
-let windows = [frontWindowBlank, backWindowBlank].union()
+
+//
+// BigCutouts
+//
+let bigBlockTopSize = Size(width: TBody.bigBlockWidth, height: TBody.width)
+let sunroofSize = bigBlockTopSize.inset(widthBy: windowFrameWidth, heightBy: windowFrameWidth)
+let sunroofBlankHeight = TBody.height.half
+let sunroofBlank = cube(x: sunroofSize.width, y: sunroofSize.height, z: sunroofBlankHeight)
+    .translate(x: -(sunroofSize.width+windowFrameWidth), y: windowFrameWidth, z: TBody.height-sunroofBlankHeight)
+
+let personBlankDiameter = 17.5
+let personBlankHeight = 9.0
+
+let personBlank1 = cylinder(diameter: personBlankDiameter, height: personBlankHeight, center: false)
+    .translate(x: -TBody.bigBlockWidth.half, y: sunroofSize.height/4.0, z: 0)
+let personBlank2 = personBlank1
+    .translate(x: 0, y: sunroofSize.height.half, z: 0)
+
+let peopleBlanks = [personBlank1, personBlank2].union()
+    .translate(x: 0, y: windowFrameWidth, z: TBody.height-sunroofBlankHeight-personBlankHeight)
 
 
 
 let truckBody = [bigBlock, littleBlock, windshieldCurve, hoodCurve, bumper].union()
 let bodyWithWell = [truckBody, well].difference()
-
-let bodyWithWindows = [bodyWithWell, windows].difference()
+let cutouts = [frontWindowBlank, backWindowBlank, sunroofBlank, peopleBlanks].union()
+let bodyWithWindows = [bodyWithWell, cutouts].difference()
 let bodyAndTires = [bodyWithWindows, tires].and()
 
 bodyAndTires.exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "flatbed", swiftySCADProjectPath: ProjectPath)
