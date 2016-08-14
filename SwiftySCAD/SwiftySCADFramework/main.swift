@@ -105,17 +105,34 @@ let tires = [tire1, tire2].union()
 
 let backWindowWidth = TBody.bigBlockWidth*0.4
 let windowBaseLine = TBody.smallBlockHeight+TBody.hoodP2.y
-//let windowFrameWidth = TBody
-let backWindow = cube(x: backWindowWidth, y: TBody.width, z: 0)
+let windowFrameWidth = 3.0
+let windowHeight = TBody.height-windowBaseLine-windowFrameWidth
+let backWindowBlank = cube(x: backWindowWidth, y: TBody.width, z: windowHeight)
+    .translate(x: -(windowFrameWidth+backWindowWidth), y: 0, z: TBody.height-(windowFrameWidth+windowHeight))
+
+let frontWindowTopWidth = TBody.bigBlockWidth-(backWindowWidth+windowFrameWidth*2)
+let frontWindowBottomWidth = frontWindowTopWidth+TBody.smallBlockWidth*0.28
+let frontWindowBlank = polygon([
+    p(0,0),
+    p(0, windowHeight),
+    p(-frontWindowTopWidth, windowHeight),
+    p(-frontWindowBottomWidth,0)
+    ])
+    .linearExtrusion(height: TBody.width+big_epsilon)
+    .rotate(x: 90, y: 0, z: 0)
+    .translate(x: -(windowFrameWidth*2+backWindowWidth), y: TBody.width+big_epsilon, z: windowBaseLine)
+
+let windows = [frontWindowBlank, backWindowBlank].union()
 
 
 
 let truckBody = [bigBlock, littleBlock, windshieldCurve, hoodCurve, bumper].union()
 let bodyWithWell = [truckBody, well].difference()
-let bodyAndTires = [bodyWithWell, tires].and()
-//bodyAndTires.exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "flatbed", swiftySCADProjectPath: ProjectPath)
 
-truckWheel().exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "tire", swiftySCADProjectPath: ProjectPath)
+let bodyWithWindows = [bodyWithWell, windows].difference()
+let bodyAndTires = [bodyWithWindows, tires].and()
+
+bodyAndTires.exportAsOpenSCAD(destinationDirectoryPath: DestinationDirectoryPath, fileName: "flatbed", swiftySCADProjectPath: ProjectPath)
 
 
 
