@@ -49,6 +49,11 @@ extension String {
     }
 }
 
+// Double Extension
+extension Double {
+    static var min = DBL_MIN
+    static var max = DBL_MAX
+}
 
 
 

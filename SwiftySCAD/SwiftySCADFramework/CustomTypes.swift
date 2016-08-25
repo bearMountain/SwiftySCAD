@@ -28,6 +28,16 @@ extension Point {
     func scadOutput() -> String {
         return "[\(x), \(y)]"
     }
+    
+    init(_ point: CGPoint) {
+        self.x = Double(point.x)
+        self.y = Double(point.y)
+    }
+    
+    init() {
+        self.x = 0
+        self.y = 0
+    }
 }
 
 func p(x: Double,_ y: Double) -> Point {
