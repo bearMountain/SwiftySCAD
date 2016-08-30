@@ -27,9 +27,13 @@
 		1F37FF291D5E84FD00F971EB /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37FF281D5E84FD00F971EB /* Utilities.swift */; };
 		1F37FF2B1D5E86B600F971EB /* CustomShapeConstructors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37FF2A1D5E86B600F971EB /* CustomShapeConstructors.swift */; };
 		1F37FF2D1D6323A300F971EB /* Dually_Truck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37FF2C1D6323A300F971EB /* Dually_Truck.swift */; };
+		1F397D7C1D75415200FE95CC /* Three.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F397D7B1D75415200FE95CC /* Three.swift */; };
+		1F397D7E1D75467500FE95CC /* Four.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F397D7D1D75467500FE95CC /* Four.swift */; };
+		1F397D801D754F9E00FE95CC /* Five.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F397D7F1D754F9E00FE95CC /* Five.swift */; };
 		1FA488671D69B40C0070B860 /* Toy_Gear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA488661D69B40C0070B860 /* Toy_Gear.swift */; };
 		1FFB001E1D6EC20200CCCA27 /* One.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB001D1D6EC20200CCCA27 /* One.swift */; };
 		1FFB00201D6F865300CCCA27 /* Two.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB001F1D6F865300CCCA27 /* Two.swift */; };
+		1FFB00221D6F888600CCCA27 /* NumberLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB00211D6F888600CCCA27 /* NumberLibrary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,10 +70,14 @@
 		1F37FF281D5E84FD00F971EB /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = SwiftySCADFramework/Utilities.swift; sourceTree = "<group>"; };
 		1F37FF2A1D5E86B600F971EB /* CustomShapeConstructors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomShapeConstructors.swift; path = SwiftySCADFramework/CustomShapeConstructors.swift; sourceTree = "<group>"; };
 		1F37FF2C1D6323A300F971EB /* Dually_Truck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dually_Truck.swift; path = SamplePieces/Dually_Truck.swift; sourceTree = "<group>"; };
+		1F397D7B1D75415200FE95CC /* Three.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Three.swift; path = NumbersSource/Three.swift; sourceTree = "<group>"; };
+		1F397D7D1D75467500FE95CC /* Four.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Four.swift; path = NumbersSource/Four.swift; sourceTree = "<group>"; };
+		1F397D7F1D754F9E00FE95CC /* Five.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Five.swift; path = NumbersSource/Five.swift; sourceTree = "<group>"; };
 		1F7E188F1D3F0FC20077CF85 /* SwiftySCAD */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftySCAD; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA488661D69B40C0070B860 /* Toy_Gear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Toy_Gear.swift; path = SamplePieces/Toy_Gear.swift; sourceTree = "<group>"; };
 		1FFB001D1D6EC20200CCCA27 /* One.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = One.swift; path = NumbersSource/One.swift; sourceTree = "<group>"; };
 		1FFB001F1D6F865300CCCA27 /* Two.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Two.swift; path = NumbersSource/Two.swift; sourceTree = "<group>"; };
+		1FFB00211D6F888600CCCA27 /* NumberLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberLibrary.swift; path = SwiftySCADFramework/Numbers/NumberLibrary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +98,10 @@
 				1F17CDBE1D6D9CC900C3A000 /* Zero.swift */,
 				1FFB001D1D6EC20200CCCA27 /* One.swift */,
 				1FFB001F1D6F865300CCCA27 /* Two.swift */,
+				1FFB00211D6F888600CCCA27 /* NumberLibrary.swift */,
+				1F397D7B1D75415200FE95CC /* Three.swift */,
+				1F397D7D1D75467500FE95CC /* Four.swift */,
+				1F397D7F1D754F9E00FE95CC /* Five.swift */,
 			);
 			name = Numbers;
 			sourceTree = "<group>";
@@ -174,16 +186,24 @@
 			children = (
 				1F37FF281D5E84FD00F971EB /* Utilities.swift */,
 				1F37FF251D5E81A500F971EB /* Operations */,
-				1F37FF0B1D5D41D200F971EB /* 2DShapes.swift */,
-				1F37FF0C1D5D41D200F971EB /* 3DShapes.swift */,
+				1FFB00231D6F897100CCCA27 /* Shapes */,
 				1F37FF0D1D5D41D200F971EB /* Constants.swift */,
 				1F37FF0E1D5D41D200F971EB /* CustomTypes.swift */,
 				1F37FF0F1D5D41D200F971EB /* MathHelpers.swift */,
 				1F37FF111D5D41D200F971EB /* SwiftExtensions.swift */,
-				1F37FF2A1D5E86B600F971EB /* CustomShapeConstructors.swift */,
 				1F17CDB91D6D977B00C3A000 /* BCPath.swift */,
 			);
 			name = SwiftySCAD;
+			sourceTree = "<group>";
+		};
+		1FFB00231D6F897100CCCA27 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				1F37FF2A1D5E86B600F971EB /* CustomShapeConstructors.swift */,
+				1F37FF0B1D5D41D200F971EB /* 2DShapes.swift */,
+				1F37FF0C1D5D41D200F971EB /* 3DShapes.swift */,
+			);
+			name = Shapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +271,7 @@
 				1F37FF291D5E84FD00F971EB /* Utilities.swift in Sources */,
 				1F37FF2D1D6323A300F971EB /* Dually_Truck.swift in Sources */,
 				1FFB00201D6F865300CCCA27 /* Two.swift in Sources */,
+				1F397D7C1D75415200FE95CC /* Three.swift in Sources */,
 				1F37FF201D5D41DE00F971EB /* Extruder_Cullet.swift in Sources */,
 				1F37FF141D5D41D200F971EB /* 3DShapes.swift in Sources */,
 				1F37FF131D5D41D200F971EB /* 2DShapes.swift in Sources */,
@@ -258,11 +279,14 @@
 				1F37FF241D5D41F100F971EB /* Tests.swift in Sources */,
 				1F37FF271D5E81BA00F971EB /* CollectionOperations.swift in Sources */,
 				1FA488671D69B40C0070B860 /* Toy_Gear.swift in Sources */,
+				1F397D801D754F9E00FE95CC /* Five.swift in Sources */,
 				1F37FF171D5D41D200F971EB /* MathHelpers.swift in Sources */,
 				1F17CDBF1D6D9CC900C3A000 /* Zero.swift in Sources */,
 				1F37FF181D5D41D200F971EB /* ShapeOperations.swift in Sources */,
+				1F397D7E1D75467500FE95CC /* Four.swift in Sources */,
 				1F37FF211D5D41DE00F971EB /* Stroller_Bracket.swift in Sources */,
 				1FFB001E1D6EC20200CCCA27 /* One.swift in Sources */,
+				1FFB00221D6F888600CCCA27 /* NumberLibrary.swift in Sources */,
 				1F37FF2B1D5E86B600F971EB /* CustomShapeConstructors.swift in Sources */,
 				1F37FF191D5D41D200F971EB /* SwiftExtensions.swift in Sources */,
 				1F37FF221D5D41DE00F971EB /* Truck_Wheel.swift in Sources */,

@@ -44,3 +44,14 @@ func rawTwo() -> String {
     
     return two
 }
+
+func normalizeRawTwo() -> String {
+    let constraintHeight = 10.0
+    let rawheight = 1430.0
+    let scale = constraintHeight/rawheight
+    
+    return "import(\"two.stl\", convexity=6);"
+        .mirror(x: 0, y: 1, z: 0)
+        .translate(x: -780, y: 2530, z: 0)
+        .scale(x: scale, y: scale, z: scale)
+}

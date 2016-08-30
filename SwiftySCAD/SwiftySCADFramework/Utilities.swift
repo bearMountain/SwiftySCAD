@@ -41,6 +41,14 @@ func postProcess(shape shape: String, openSCADLibraryFolderPath libraryPath: Str
     
     return shapeWithLibs
 }
+//
+// import("example012.stl", convexity=3);
+//
+// `fileName` should omit the file extension
+//
+func bc_import(fileName: String, convexity: Int) -> String {
+    return "import(\"\(fileName).stl\", convexity=\(convexity));"
+}
 
 //
 // use </Users/jeff/Documents/OpenSCAD/OpenSCADLibraries/LibBezier.scad>;
