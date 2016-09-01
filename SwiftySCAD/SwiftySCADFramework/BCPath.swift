@@ -95,7 +95,7 @@ class BCPath {
         currentPoint = Point(point)
     }
     
-    func makeSCAD(height height: Double) -> String {
+    func makeSCAD(height height: Double, hull: Bool = true) -> String {
         var shape: [String] = []
         var startPoint: Point?
         
@@ -113,12 +113,17 @@ class BCPath {
                 if (startPoint == nil) {
                     startPoint = bezier.start
                 }
-                let bez = bezierCurveSolid(p1: bezier.start, c1: bezier.controlPoint1, c2: bezier.controlPoint2, p2: bezier.end, focalPoint: startPoint!, height: height, resolution: 20, hull: true, displayPoints: false)
+                let bez = bezierCurveSolid(p1: bezier.start, c1: bezier.controlPoint1, c2: bezier.controlPoint2, p2: bezier.end, focalPoint: startPoint!, height: height, resolution: 20, hull: hull, displayPoints: false)
                 shape.append(bez)
             }
         }
         
-        return shape.hull()
+        if (hull) {
+            return shape.hull()
+        } else {
+            return shape.union()
+        }
+//        return shape.hull()
     }
     
     private var currentPoint: Point = Point(x:0, y:0)

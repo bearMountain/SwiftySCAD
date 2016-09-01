@@ -32,6 +32,18 @@ struct NumberLibrary {
         return loadNumber("five", convexity: 6, width: 8.5, centered: centered)
     }
     
+    static func six(centered centered: Bool = false) -> String {
+        return loadNumber("six", convexity: 6, width: 7.7, centered: centered)
+    }
+    
+    static func seven(centered centered: Bool = false) -> String {
+        return loadNumber("seven", convexity: 4, width: 5.2, centered: centered)
+    }
+    
+    static func eight(centered centered: Bool = false) -> String {
+        return loadNumber("eight", convexity: 6, width: 5.9, centered: centered)
+    }
+    
     static func nine(centered centered: Bool = false) -> String {
         return loadNumber("nine", convexity: 6, width: 6.5, centered: centered)
     }
