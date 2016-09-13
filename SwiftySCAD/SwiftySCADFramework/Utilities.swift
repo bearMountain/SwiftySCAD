@@ -8,7 +8,10 @@ import Foundation
 
 // Export
 extension String {
-    func exportAsOpenSCAD(destinationDirectoryPath destinationDirectoryPath: String, fileName: String, swiftySCADProjectPath: String) {
+    func exportAsOpenSCAD(destinationDirectoryPath destinationDirectoryPath: String,
+                                                   fileName: String,
+                                                   swiftySCADProjectPath: String)
+    {
         // Project Paths
         let projectFolderPath = destinationDirectoryPath + "/" + fileName
         let shapePath = projectFolderPath + "/" + fileName + ".scad"

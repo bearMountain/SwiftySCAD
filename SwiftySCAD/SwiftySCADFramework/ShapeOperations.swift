@@ -19,7 +19,7 @@ extension String {
     //
     // translate([1,2,3]) {}
     //
-    func translate(x x: Double, y: Double, z: Double) -> String {
+    func translate(x x: Double = 0, y: Double = 0, z: Double = 0) -> String {
         let term = "translate([\(x), \(y), \(z)])"
         return self.aggregate(withTerm: term)
     }
@@ -38,6 +38,10 @@ extension String {
     func scale(x x: Double, y: Double, z: Double) -> String {
         let term = "scale([\(x), \(y), \(z)])"
         return self.aggregate(withTerm: term)
+    }
+    
+    func scale(factor: Double) -> String {
+        return scale(x: factor, y: factor, z: factor)
     }
     
     //

@@ -64,4 +64,35 @@ extension SequenceType where Generator.Element == String {
     func hull() -> String {
         return execute{$0.aggregate(withTerm: "hull()")}
     }
+    
+    func distributeOnCircle(radius radius: Double) -> String {
+        return execute({ (shapes) -> (String) in
+            let angleInterval = 360.0/Double(shapes.count)
+            var distributedShapes: [String] = []
+            
+            for (i, shape) in shapes.enumerate() {
+                let currentAngle = Double(i) * angleInterval
+                let distributedShape = shape
+                    .rotate(x: 0, y: 0, z: -currentAngle)
+                    .translate(x: radius, y: 0, z: 0)
+                    .rotate(x: 0, y: 0, z: currentAngle)
+                distributedShapes.append(distributedShape)
+            }
+            
+            return distributedShapes.and()
+        })
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

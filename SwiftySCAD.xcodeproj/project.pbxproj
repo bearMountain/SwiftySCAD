@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F02A82D1D84FFD9001A55A6 /* Ten.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02A82C1D84FFD9001A55A6 /* Ten.swift */; };
+		1F02A8421D87B4E3001A55A6 /* Eleven.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02A8411D87B4E3001A55A6 /* Eleven.swift */; };
+		1F02A8441D87B866001A55A6 /* Twelve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02A8431D87B866001A55A6 /* Twelve.swift */; };
 		1F17CDBA1D6D977B00C3A000 /* BCPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17CDB91D6D977B00C3A000 /* BCPath.swift */; };
 		1F17CDBD1D6D980900C3A000 /* Nine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17CDBC1D6D980900C3A000 /* Nine.swift */; };
 		1F17CDBF1D6D9CC900C3A000 /* Zero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17CDBE1D6D9CC900C3A000 /* Zero.swift */; };
@@ -52,6 +55,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F02A82C1D84FFD9001A55A6 /* Ten.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ten.swift; path = NumbersSource/Ten.swift; sourceTree = "<group>"; };
+		1F02A8411D87B4E3001A55A6 /* Eleven.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Eleven.swift; path = NumbersSource/Eleven.swift; sourceTree = "<group>"; };
+		1F02A8431D87B866001A55A6 /* Twelve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Twelve.swift; path = NumbersSource/Twelve.swift; sourceTree = "<group>"; };
 		1F17CDB91D6D977B00C3A000 /* BCPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BCPath.swift; path = SwiftySCADFramework/BCPath.swift; sourceTree = "<group>"; };
 		1F17CDBC1D6D980900C3A000 /* Nine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Nine.swift; path = NumbersSource/Nine.swift; sourceTree = "<group>"; };
 		1F17CDBE1D6D9CC900C3A000 /* Zero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Zero.swift; path = NumbersSource/Zero.swift; sourceTree = "<group>"; };
@@ -102,6 +108,7 @@
 			children = (
 				1F17CDBC1D6D980900C3A000 /* Nine.swift */,
 				1F17CDBE1D6D9CC900C3A000 /* Zero.swift */,
+				1F02A82C1D84FFD9001A55A6 /* Ten.swift */,
 				1FFB001D1D6EC20200CCCA27 /* One.swift */,
 				1FFB001F1D6F865300CCCA27 /* Two.swift */,
 				1FFB00211D6F888600CCCA27 /* NumberLibrary.swift */,
@@ -111,6 +118,8 @@
 				1FE7A4771D760F5D0034FCE1 /* Six.swift */,
 				1F2FC5A31D7756330060E35E /* Seven.swift */,
 				1F2FC5A51D77B2A80060E35E /* Eight.swift */,
+				1F02A8411D87B4E3001A55A6 /* Eleven.swift */,
+				1F02A8431D87B866001A55A6 /* Twelve.swift */,
 			);
 			name = Numbers;
 			sourceTree = "<group>";
@@ -278,17 +287,20 @@
 				1F17CDBD1D6D980900C3A000 /* Nine.swift in Sources */,
 				1FE7A4781D760F5D0034FCE1 /* Six.swift in Sources */,
 				1F17CDBA1D6D977B00C3A000 /* BCPath.swift in Sources */,
+				1F02A8421D87B4E3001A55A6 /* Eleven.swift in Sources */,
 				1F37FF291D5E84FD00F971EB /* Utilities.swift in Sources */,
 				1F37FF2D1D6323A300F971EB /* Dually_Truck.swift in Sources */,
 				1FFB00201D6F865300CCCA27 /* Two.swift in Sources */,
 				1F397D7C1D75415200FE95CC /* Three.swift in Sources */,
 				1F37FF201D5D41DE00F971EB /* Extruder_Cullet.swift in Sources */,
 				1F37FF141D5D41D200F971EB /* 3DShapes.swift in Sources */,
+				1F02A8441D87B866001A55A6 /* Twelve.swift in Sources */,
 				1F37FF131D5D41D200F971EB /* 2DShapes.swift in Sources */,
 				1F37FF091D5D41B400F971EB /* main.swift in Sources */,
 				1F37FF241D5D41F100F971EB /* Tests.swift in Sources */,
 				1F37FF271D5E81BA00F971EB /* CollectionOperations.swift in Sources */,
 				1FA488671D69B40C0070B860 /* Toy_Gear.swift in Sources */,
+				1F02A82D1D84FFD9001A55A6 /* Ten.swift in Sources */,
 				1F397D801D754F9E00FE95CC /* Five.swift in Sources */,
 				1F2FC5A41D7756330060E35E /* Seven.swift in Sources */,
 				1F37FF171D5D41D200F971EB /* MathHelpers.swift in Sources */,
