@@ -17,7 +17,7 @@ let numbers = [
     NumberLibrary.eleven(centered: true),
     NumberLibrary.ten(centered: true),
     NumberLibrary.nine(centered: true).scale(1.2).translate(x: -1.0),
-    NumberLibrary.eight(centered: true),
+    NumberLibrary.eight(centered: true).scale(1.1),
     NumberLibrary.seven(centered: true).scale(1.15),
     NumberLibrary.six(centered: true),
     NumberLibrary.five(centered: true),
